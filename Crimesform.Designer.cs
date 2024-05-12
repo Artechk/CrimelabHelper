@@ -31,9 +31,9 @@
             components = new System.ComponentModel.Container();
             crimesList = new DataGridView();
             crimeRepositoryBindingSource = new BindingSource(components);
-            addcrimeBtn = new Button();
-            editcrimeBtn = new Button();
-            deletecrimeBtn = new Button();
+            addBtn = new Button();
+            editBtn = new Button();
+            deleteBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)crimesList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)crimeRepositoryBindingSource).BeginInit();
             SuspendLayout();
@@ -54,62 +54,62 @@
             // 
             crimeRepositoryBindingSource.DataSource = typeof(Repositories.CrimeRepository);
             // 
-            // addcrimeBtn
+            // addBtn
             // 
-            addcrimeBtn.BackColor = Color.WhiteSmoke;
-            addcrimeBtn.FlatAppearance.BorderColor = Color.Gainsboro;
-            addcrimeBtn.FlatAppearance.BorderSize = 2;
-            addcrimeBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
-            addcrimeBtn.FlatStyle = FlatStyle.Flat;
-            addcrimeBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            addcrimeBtn.Location = new Point(986, 12);
-            addcrimeBtn.Name = "addcrimeBtn";
-            addcrimeBtn.Size = new Size(118, 51);
-            addcrimeBtn.TabIndex = 2;
-            addcrimeBtn.Text = "Add";
-            addcrimeBtn.UseVisualStyleBackColor = false;
-            addcrimeBtn.Click += addcrimeBtn_Click;
+            addBtn.BackColor = Color.WhiteSmoke;
+            addBtn.FlatAppearance.BorderColor = Color.Gainsboro;
+            addBtn.FlatAppearance.BorderSize = 2;
+            addBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+            addBtn.FlatStyle = FlatStyle.Flat;
+            addBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            addBtn.Location = new Point(986, 12);
+            addBtn.Name = "addBtn";
+            addBtn.Size = new Size(118, 51);
+            addBtn.TabIndex = 2;
+            addBtn.Text = "Add";
+            addBtn.UseVisualStyleBackColor = false;
+            addBtn.Click += addcrimeBtn_Click;
             // 
-            // editcrimeBtn
+            // editBtn
             // 
-            editcrimeBtn.BackColor = Color.WhiteSmoke;
-            editcrimeBtn.FlatAppearance.BorderColor = Color.Gainsboro;
-            editcrimeBtn.FlatAppearance.BorderSize = 2;
-            editcrimeBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
-            editcrimeBtn.FlatStyle = FlatStyle.Flat;
-            editcrimeBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            editcrimeBtn.Location = new Point(986, 100);
-            editcrimeBtn.Name = "editcrimeBtn";
-            editcrimeBtn.Size = new Size(118, 51);
-            editcrimeBtn.TabIndex = 3;
-            editcrimeBtn.Text = "Edit";
-            editcrimeBtn.UseVisualStyleBackColor = false;
-            editcrimeBtn.Click += editcrimeBtn_Click;
+            editBtn.BackColor = Color.WhiteSmoke;
+            editBtn.FlatAppearance.BorderColor = Color.Gainsboro;
+            editBtn.FlatAppearance.BorderSize = 2;
+            editBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+            editBtn.FlatStyle = FlatStyle.Flat;
+            editBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            editBtn.Location = new Point(986, 100);
+            editBtn.Name = "editBtn";
+            editBtn.Size = new Size(118, 51);
+            editBtn.TabIndex = 3;
+            editBtn.Text = "Edit";
+            editBtn.UseVisualStyleBackColor = false;
+            editBtn.Click += editcrimeBtn_Click;
             // 
-            // deletecrimeBtn
+            // deleteBtn
             // 
-            deletecrimeBtn.BackColor = Color.WhiteSmoke;
-            deletecrimeBtn.FlatAppearance.BorderColor = Color.Gainsboro;
-            deletecrimeBtn.FlatAppearance.BorderSize = 2;
-            deletecrimeBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
-            deletecrimeBtn.FlatStyle = FlatStyle.Flat;
-            deletecrimeBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            deletecrimeBtn.Location = new Point(986, 190);
-            deletecrimeBtn.Name = "deletecrimeBtn";
-            deletecrimeBtn.Size = new Size(118, 51);
-            deletecrimeBtn.TabIndex = 4;
-            deletecrimeBtn.Text = "Delete";
-            deletecrimeBtn.UseVisualStyleBackColor = false;
-            deletecrimeBtn.Click += deletecrimeBtn_Click;
+            deleteBtn.BackColor = Color.WhiteSmoke;
+            deleteBtn.FlatAppearance.BorderColor = Color.Gainsboro;
+            deleteBtn.FlatAppearance.BorderSize = 2;
+            deleteBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+            deleteBtn.FlatStyle = FlatStyle.Flat;
+            deleteBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            deleteBtn.Location = new Point(986, 190);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(118, 51);
+            deleteBtn.TabIndex = 4;
+            deleteBtn.Text = "Delete";
+            deleteBtn.UseVisualStyleBackColor = false;
+            deleteBtn.Click += deletecrimeBtn_Click;
             // 
             // Crimesform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1116, 453);
-            Controls.Add(deletecrimeBtn);
-            Controls.Add(editcrimeBtn);
-            Controls.Add(addcrimeBtn);
+            Controls.Add(deleteBtn);
+            Controls.Add(editBtn);
+            Controls.Add(addBtn);
             Controls.Add(crimesList);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Crimesform";
@@ -123,8 +123,8 @@
 
         private DataGridView crimesList;
         private BindingSource crimeRepositoryBindingSource;
-        private Button addcrimeBtn;
-        private Button editcrimeBtn;
-        private Button deletecrimeBtn;
+        private Button addBtn;
+        private Button editBtn;
+        private Button deleteBtn;
     }
 }

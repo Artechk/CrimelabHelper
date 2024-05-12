@@ -50,7 +50,7 @@ namespace CrimelabHelper.Repositories
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM evidences WHERE EvidenceId = @EvidenceId";
+                string query = "SELECT * FROM evidences WHERE evidence_id = @EvidenceId";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@EvidenceId", evidenceId);
                 using (MySqlDataReader reader = command.ExecuteReader())
@@ -59,11 +59,11 @@ namespace CrimelabHelper.Repositories
                     {
                         evidence = new Evidence
                         {
-                            EvidenceId = reader.GetInt32("EvidenceId"),
-                            Description = reader.GetString("Description"),
-                            Type = reader.GetString("Type"),
-                            Status = reader.GetString("Status"),
-                            CrimeId = reader.GetInt32("CrimeId")
+                            EvidenceId = reader.GetInt32("evidence_id"),
+                            Description = reader.GetString("description"),
+                            Type = reader.GetString("type"),
+                            Status = reader.GetString("status"),
+                            CrimeId = reader.GetInt32("crime_id")
                         };
                     }
                 }
@@ -71,6 +71,47 @@ namespace CrimelabHelper.Repositories
             return evidence;
         }
 
-        // Додати методи для вставки, оновлення та видалення даних
+        public void AddEvidence(Evidence evidence)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "INSERT INTO evidences (description, type, status, crime_id) VALUES (@Description, @Type, @Status, @CrimeId)";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Description", evidence.Description);
+                command.Parameters.AddWithValue("@Type", evidence.Type);
+                command.Parameters.AddWithValue("@Status", evidence.Status);
+                command.Parameters.AddWithValue("@CrimeId", evidence.CrimeId);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void UpdateEvidence(Evidence evidence)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "UPDATE evidences SET description = @Description, type = @Type, status = @Status, crime_id = @CrimeId WHERE evidence_id = @EvidenceId";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Description", evidence.Description);
+                command.Parameters.AddWithValue("@Type", evidence.Type);
+                command.Parameters.AddWithValue("@Status", evidence.Status);
+                command.Parameters.AddWithValue("@CrimeId", evidence.CrimeId);
+                command.Parameters.AddWithValue("@EvidenceId", evidence.EvidenceId);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteEvidence(int evidenceId)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "DELETE FROM evidences WHERE evidence_id = @EvidenceId";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@EvidenceId", evidenceId);
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

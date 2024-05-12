@@ -1,6 +1,6 @@
-﻿namespace CrimelabHelper
+﻿namespace CrimelabHelper.Edit_Forms
 {
-    partial class CrimeEditForm
+    partial class EvidenceEditForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,49 +30,39 @@
         {
             descriptionTextBox = new TextBox();
             typeTextBox = new TextBox();
-            dateDateTimePicker = new DateTimePicker();
-            saveBtn = new Button();
+            statusTextBox = new TextBox();
+            crimeIdTextBox = new TextBox();
             cancelBtn = new Button();
+            saveBtn = new Button();
             SuspendLayout();
             // 
             // descriptionTextBox
             // 
-            descriptionTextBox.Location = new Point(263, 42);
+            descriptionTextBox.Location = new Point(97, 25);
             descriptionTextBox.Name = "descriptionTextBox";
-            descriptionTextBox.Size = new Size(226, 23);
+            descriptionTextBox.Size = new Size(187, 23);
             descriptionTextBox.TabIndex = 0;
-            descriptionTextBox.Text = "description";
             // 
             // typeTextBox
             // 
-            typeTextBox.Location = new Point(263, 93);
+            typeTextBox.Location = new Point(97, 65);
             typeTextBox.Name = "typeTextBox";
-            typeTextBox.Size = new Size(226, 23);
+            typeTextBox.Size = new Size(187, 23);
             typeTextBox.TabIndex = 1;
-            typeTextBox.Text = "type";
             // 
-            // dateDateTimePicker
+            // statusTextBox
             // 
-            dateDateTimePicker.Location = new Point(263, 159);
-            dateDateTimePicker.Name = "dateDateTimePicker";
-            dateDateTimePicker.Size = new Size(226, 23);
-            dateDateTimePicker.TabIndex = 2;
+            statusTextBox.Location = new Point(97, 107);
+            statusTextBox.Name = "statusTextBox";
+            statusTextBox.Size = new Size(187, 23);
+            statusTextBox.TabIndex = 2;
             // 
-            // saveBtn
+            // crimeIdTextBox
             // 
-            saveBtn.BackColor = Color.WhiteSmoke;
-            saveBtn.FlatAppearance.BorderColor = Color.Gainsboro;
-            saveBtn.FlatAppearance.BorderSize = 2;
-            saveBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
-            saveBtn.FlatStyle = FlatStyle.Flat;
-            saveBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            saveBtn.Location = new Point(263, 244);
-            saveBtn.Name = "saveBtn";
-            saveBtn.Size = new Size(84, 33);
-            saveBtn.TabIndex = 3;
-            saveBtn.Text = "Save";
-            saveBtn.UseVisualStyleBackColor = false;
-            saveBtn.Click += saveBtn_Click;
+            crimeIdTextBox.Location = new Point(97, 147);
+            crimeIdTextBox.Name = "crimeIdTextBox";
+            crimeIdTextBox.Size = new Size(187, 23);
+            crimeIdTextBox.TabIndex = 3;
             // 
             // cancelBtn
             // 
@@ -82,26 +72,44 @@
             cancelBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
             cancelBtn.FlatStyle = FlatStyle.Flat;
             cancelBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cancelBtn.Location = new Point(405, 244);
+            cancelBtn.Location = new Point(214, 226);
             cancelBtn.Name = "cancelBtn";
             cancelBtn.Size = new Size(84, 33);
-            cancelBtn.TabIndex = 4;
+            cancelBtn.TabIndex = 6;
             cancelBtn.Text = "Cancel";
             cancelBtn.UseVisualStyleBackColor = false;
             cancelBtn.Click += cancelBtn_Click;
             // 
-            // CrimeEditForm
+            // saveBtn
+            // 
+            saveBtn.BackColor = Color.WhiteSmoke;
+            saveBtn.FlatAppearance.BorderColor = Color.Gainsboro;
+            saveBtn.FlatAppearance.BorderSize = 2;
+            saveBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+            saveBtn.FlatStyle = FlatStyle.Flat;
+            saveBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            saveBtn.Location = new Point(72, 226);
+            saveBtn.Name = "saveBtn";
+            saveBtn.Size = new Size(84, 33);
+            saveBtn.TabIndex = 5;
+            saveBtn.Text = "Save";
+            saveBtn.UseVisualStyleBackColor = false;
+            saveBtn.Click += saveBtn_Click;
+            // 
+            // EvidenceEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(400, 382);
             Controls.Add(cancelBtn);
             Controls.Add(saveBtn);
-            Controls.Add(dateDateTimePicker);
+            Controls.Add(crimeIdTextBox);
+            Controls.Add(statusTextBox);
             Controls.Add(typeTextBox);
             Controls.Add(descriptionTextBox);
-            Name = "CrimeEditForm";
-            Text = "CrimeEditForm";
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "EvidenceEditForm";
+            Text = "EvidenceEditForm";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -110,8 +118,9 @@
 
         private TextBox descriptionTextBox;
         private TextBox typeTextBox;
-        private DateTimePicker dateDateTimePicker;
-        private Button saveBtn;
+        private TextBox statusTextBox;
+        private TextBox crimeIdTextBox;
         private Button cancelBtn;
+        private Button saveBtn;
     }
 }
