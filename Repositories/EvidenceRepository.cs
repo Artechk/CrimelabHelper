@@ -31,11 +31,11 @@ namespace CrimelabHelper.Repositories
                     {
                         Evidence evidence = new Evidence
                         {
-                            EvidenceId = reader.GetInt32("EvidenceId"),
-                            Description = reader.GetString("Description"),
-                            Type = reader.GetString("Type"),
-                            Status = reader.GetString("Status"),
-                            CrimeId = reader.GetInt32("CrimeId")
+                            EvidenceId = reader.GetInt32("evidence_id"),
+                            Description = reader.GetString("description"),
+                            Type = reader.GetString("type"),
+                            Status = reader.GetString("status"),
+                            CrimeId = reader.GetInt32("crime_id")
                         };
                         evidences.Add(evidence);
                     }

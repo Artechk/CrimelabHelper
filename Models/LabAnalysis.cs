@@ -15,6 +15,5 @@ namespace CrimelabHelper.Models
         public int EvidenceId { get; set; }
         public DateTime Date { get; set; }
         public string Results { get; set; }
-        public string ChemicalSubstances { get; set; }
     }
 }

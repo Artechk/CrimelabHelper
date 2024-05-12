@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using CrimelabHelper.Models;
 
-namespace CrimelabHelper.Data
+namespace CrimelabHelper.Repositories
 {
     public class InvestigationReportRepository
     {
@@ -31,12 +31,12 @@ namespace CrimelabHelper.Data
                     {
                         InvestigationReport report = new InvestigationReport
                         {
-                            ReportId = reader.GetInt32("ReportId"),
-                            CrimeId = reader.GetInt32("CrimeId"),
-                            Date = reader.GetDateTime("Date"),
-                            Description = reader.GetString("Description"),
-                            Conclusions = reader.GetString("Conclusions"),
-                            ExpertId = reader.GetInt32("ExpertId")
+                            ReportId = reader.GetInt32("report_id"),
+                            CrimeId = reader.GetInt32("crime_id"),
+                            Date = reader.GetDateTime("date"),
+                            Description = reader.GetString("description"),
+                            Conclusions = reader.GetString("conclusions"),
+                            ExpertId = reader.GetInt32("expert")
                         };
                         reports.Add(report);
                     }
@@ -60,12 +60,12 @@ namespace CrimelabHelper.Data
                     {
                         report = new InvestigationReport
                         {
-                            ReportId = reader.GetInt32("ReportId"),
-                            CrimeId = reader.GetInt32("CrimeId"),
-                            Date = reader.GetDateTime("Date"),
-                            Description = reader.GetString("Description"),
-                            Conclusions = reader.GetString("Conclusions"),
-                            ExpertId = reader.GetInt32("ExpertId")
+                            ReportId = reader.GetInt32("report_id"),
+                            CrimeId = reader.GetInt32("crime_id"),
+                            Date = reader.GetDateTime("date"),
+                            Description = reader.GetString("description"),
+                            Conclusions = reader.GetString("conclusions"),
+                            ExpertId = reader.GetInt32("expert")
                         };
                     }
                 }

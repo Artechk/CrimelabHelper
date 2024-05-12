@@ -31,9 +31,10 @@ namespace CrimelabHelper.Repositories
                     {
                         Expert expert = new Expert
                         {
-                            ExpertId = reader.GetInt32("ExpertId"),
-                            Name = reader.GetString("Name"),
-                            Specialization = reader.GetString("Specialization")
+                            ExpertId = reader.GetInt32("expert_id"),
+                            Name = reader.GetString("name"),
+                            Specialization = reader.GetString("specialization"),
+                            Contact = reader.GetString("contact_info")
                         };
                         experts.Add(expert);
                     }

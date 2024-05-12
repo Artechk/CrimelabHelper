@@ -16,7 +16,6 @@ namespace CrimelabHelper.Models
         public string Description { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime Date { get; set; }
-        public string Location { get; set; }
         public string Type { get; set; }
     }
 }

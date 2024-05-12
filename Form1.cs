@@ -31,6 +31,31 @@ namespace CrimelabHelper
             loadform(new Crimesform());
         }
 
+        private void evidenceBtn_Click(object sender, EventArgs e)
+        {
+            loadform(new Evidenceform());
+        }
+
+        private void expertsBtn_Click(object sender, EventArgs e)
+        {
+            loadform(new Expertsform());
+        }
+
+        private void reportsBtn_Click(object sender, EventArgs e)
+        {
+            loadform(new Reportsform());
+        }
+
+        private void analysisBtn_Click(object sender, EventArgs e)
+        {
+            loadform(new Analysisform());
+        }
+
+        private void suspectsBtn_Click(object sender, EventArgs e)
+        {
+            loadform(new Suspectsform());
+        }
+
         private void exitBtn_Click(object sender, EventArgs e)
         {
             Application.Exit();

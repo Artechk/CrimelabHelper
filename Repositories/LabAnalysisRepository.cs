@@ -31,11 +31,10 @@ namespace CrimelabHelper.Repositories
                     {
                         LabAnalysis analysis = new LabAnalysis
                         {
-                            AnalysisId = reader.GetInt32("AnalysisId"),
-                            EvidenceId = reader.GetInt32("EvidenceId"),
-                            Date = reader.GetDateTime("Date"),
-                            Results = reader.GetString("Results"),
-                            ChemicalSubstances = reader.GetString("ChemicalSubstances")
+                            AnalysisId = reader.GetInt32("analysis_id"),
+                            EvidenceId = reader.GetInt32("evidence_id"),
+                            Date = reader.GetDateTime("date"),
+                            Results = reader.GetString("results"),
                         };
                         analyses.Add(analysis);
                     }
@@ -59,11 +58,10 @@ namespace CrimelabHelper.Repositories
                     {
                         analysis = new LabAnalysis
                         {
-                            AnalysisId = reader.GetInt32("AnalysisId"),
-                            EvidenceId = reader.GetInt32("EvidenceId"),
-                            Date = reader.GetDateTime("Date"),
-                            Results = reader.GetString("Results"),
-                            ChemicalSubstances = reader.GetString("ChemicalSubstances")
+                            AnalysisId = reader.GetInt32("analysis_id"),
+                            EvidenceId = reader.GetInt32("evidence_id"),
+                            Date = reader.GetDateTime("date"),
+                            Results = reader.GetString("results"),
                         };
                     }
                 }

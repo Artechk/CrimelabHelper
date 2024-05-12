@@ -14,5 +14,6 @@ namespace CrimelabHelper.Models
         public int ExpertId { get; set; }
         public string Name { get; set; }
         public string Specialization { get; set; }
+        public string Contact { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using CrimelabHelper.Models;
 
-namespace CrimelabHelper.Data
+namespace CrimelabHelper.Repositories
 {
     public class SuspectRepository
     {
@@ -31,12 +31,12 @@ namespace CrimelabHelper.Data
                     {
                         Suspect suspect = new Suspect
                         {
-                            SuspectId = reader.GetInt32("SuspectId"),
-                            Name = reader.GetString("Name"),
-                            Dob = reader.GetDateTime("Dob"),
-                            Address = reader.GetString("Address"),
-                            Status = reader.GetString("Status"),
-                            CrimeId = reader.GetInt32("CrimeId")
+                            SuspectId = reader.GetInt32("suspect_id"),
+                            Name = reader.GetString("name"),
+                            Birth = reader.GetDateTime("birth_date"),
+                            Address = reader.GetString("address"),
+                            Status = reader.GetString("status"),
+                            CrimeId = reader.GetInt32("crime_id")
                         };
                         suspects.Add(suspect);
                     }
@@ -60,12 +60,12 @@ namespace CrimelabHelper.Data
                     {
                         suspect = new Suspect
                         {
-                            SuspectId = reader.GetInt32("SuspectId"),
-                            Name = reader.GetString("Name"),
-                            Dob = reader.GetDateTime("Dob"),
-                            Address = reader.GetString("Address"),
-                            Status = reader.GetString("Status"),
-                            CrimeId = reader.GetInt32("CrimeId")
+                            SuspectId = reader.GetInt32("suspect_id"),
+                            Name = reader.GetString("name"),
+                            Birth = reader.GetDateTime("birth_date"),
+                            Address = reader.GetString("address"),
+                            Status = reader.GetString("status"),
+                            CrimeId = reader.GetInt32("crime_id")
                         };
                     }
                 }
