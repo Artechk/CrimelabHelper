@@ -48,33 +48,33 @@ namespace CrimelabHelper
 
         private void addcrimeBtn_Click(object sender, EventArgs e)
         {
-            // Створюємо нове преступлення з порожніми значеннями
+            // Створюємо нове злочин з порожніми значеннями
             Crime newCrime = new Crime();
 
-            // Відкриваємо форму для додавання преступлення
+            // Відкриваємо форму для додавання злочин
             CrimeEditForm editForm = new CrimeEditForm(newCrime);
             if (editForm.ShowDialog() == DialogResult.OK)
             {
-                // Додаємо нове преступлення до бази даних
+                // Додаємо нове злочин до бази даних
                 crimeRepository.AddCrime(newCrime);
 
-                // Поновлюємо список преступлень
+                // Поновлюємо список злочин
                 ShowCrimes();
             }
         }
         private void editcrimeBtn_Click(object sender, EventArgs e)
         {
-            // Перевіряємо, чи вибране преступлення у списку
+            // Перевіряємо, чи вибран злочин у списку
             if (selectedCrimeId != -1)
             {
-                // Отримуємо вибране преступлення з бази даних
+                // Отримуємо вибране злочин з бази даних
                 Crime crime = crimeRepository.GetCrimeById(selectedCrimeId);
 
-                // Відкриваємо форму для редагування преступлення
+                // Відкриваємо форму для редагування злочин
                 CrimeEditForm editForm = new CrimeEditForm(crime);
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
-                    // Зберігаємо змінене преступлення у базі даних
+                    // Зберігаємо змінене злочин у базі даних
                     crimeRepository.UpdateCrime(crime);
                     ShowCrimes();
                 }
@@ -86,14 +86,14 @@ namespace CrimelabHelper
         }
         private void deletecrimeBtn_Click(object sender, EventArgs e)
         {
-            // Перевіряємо, чи вибране преступлення у списку
+            // Перевіряємо, чи вибране злочин у списку
             if (selectedCrimeId != -1)
             {
                 // Питаємо користувача про підтвердження видалення
                 DialogResult result = MessageBox.Show("Ви впевнені, що хочете видалити цей злочин?", "Підтвердження видалення", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    // Видаляємо преступлення з бази даних
+                    // Видаляємо злочин з бази даних
                     crimeRepository.DeleteCrime(selectedCrimeId);
                     ShowCrimes();
                 }
