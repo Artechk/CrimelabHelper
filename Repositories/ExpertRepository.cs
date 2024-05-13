@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using CrimelabHelper.Models;
+using Mysqlx.Expr;
 
 namespace CrimelabHelper.Repositories
 {
@@ -49,7 +50,7 @@ namespace CrimelabHelper.Repositories
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM experts WHERE ExpertId = @ExpertId";
+                string query = "SELECT * FROM experts WHERE expert_id = @ExpertId";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ExpertId", expertId);
                 using (MySqlDataReader reader = command.ExecuteReader())
@@ -58,9 +59,10 @@ namespace CrimelabHelper.Repositories
                     {
                         expert = new Expert
                         {
-                            ExpertId = reader.GetInt32("ExpertId"),
-                            Name = reader.GetString("Name"),
-                            Specialization = reader.GetString("Specialization")
+                            ExpertId = reader.GetInt32("expert_id"),
+                            Name = reader.GetString("name"),
+                            Specialization = reader.GetString("specialization"),
+                            Contact = reader.GetString("contact_info")
                         };
                     }
                 }
@@ -68,6 +70,45 @@ namespace CrimelabHelper.Repositories
             return expert;
         }
 
-        // Додати методи для вставки, оновлення та видалення даних
+        public void AddExpert(Expert expert)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "INSERT INTO experts (contact_info, specialization, name) VALUES (@Contact, @Specialization, @Name)";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Name", expert.Name);
+                command.Parameters.AddWithValue("@Specialization", expert.Specialization);
+                command.Parameters.AddWithValue("@Contact", expert.Contact);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void UpdateExpert(Expert expert)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "UPDATE experts SET name = @Name, specialization = @Specialization, contact_info = @Contact WHERE expert_id = @ExpertId";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Name", expert.Name);
+                command.Parameters.AddWithValue("@Specialization", expert.Specialization);
+                command.Parameters.AddWithValue("@Contact", expert.Contact);
+                command.Parameters.AddWithValue("@ExpertId", expert.ExpertId);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteExpert(int expertId)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "DELETE FROM experts WHERE expert_id = @ExpertId";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ExpertId", expertId);
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

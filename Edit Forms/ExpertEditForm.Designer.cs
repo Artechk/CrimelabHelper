@@ -1,6 +1,6 @@
 ﻿namespace CrimelabHelper.Edit_Forms
 {
-    partial class EvidenceEditForm
+    partial class ExpertEditForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,44 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            descriptionTextBox = new TextBox();
-            typeTextBox = new TextBox();
-            statusTextBox = new TextBox();
             cancelBtn = new Button();
             saveBtn = new Button();
-            crimeComboBox = new ComboBox();
+            contactinfoTextBox = new TextBox();
+            specializationTextBox = new TextBox();
+            nameTextBox = new TextBox();
             SuspendLayout();
-            // 
-            // descriptionTextBox
-            // 
-            descriptionTextBox.Location = new Point(12, 12);
-            descriptionTextBox.Multiline = true;
-            descriptionTextBox.Name = "descriptionTextBox";
-            descriptionTextBox.Size = new Size(376, 149);
-            descriptionTextBox.TabIndex = 0;
-            descriptionTextBox.TextChanged += descriptionTextBox_TextChanged;
-            descriptionTextBox.Enter += descriptionTextBox_Enter;
-            descriptionTextBox.Leave += descriptionTextBox_Leave;
-            // 
-            // typeTextBox
-            // 
-            typeTextBox.Location = new Point(97, 179);
-            typeTextBox.Name = "typeTextBox";
-            typeTextBox.Size = new Size(187, 23);
-            typeTextBox.TabIndex = 1;
-            typeTextBox.TextChanged += typeTextBox_TextChanged;
-            typeTextBox.Enter += typeTextBox_Enter;
-            typeTextBox.Leave += typeTextBox_Leave;
-            // 
-            // statusTextBox
-            // 
-            statusTextBox.Location = new Point(97, 220);
-            statusTextBox.Name = "statusTextBox";
-            statusTextBox.Size = new Size(187, 23);
-            statusTextBox.TabIndex = 2;
-            statusTextBox.TextChanged += statusTextBox_TextChanged;
-            statusTextBox.Enter += statusTextBox_Enter;
-            statusTextBox.Leave += statusTextBox_Leave;
             // 
             // cancelBtn
             // 
@@ -75,10 +43,10 @@
             cancelBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
             cancelBtn.FlatStyle = FlatStyle.Flat;
             cancelBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cancelBtn.Location = new Point(200, 337);
+            cancelBtn.Location = new Point(214, 337);
             cancelBtn.Name = "cancelBtn";
             cancelBtn.Size = new Size(84, 33);
-            cancelBtn.TabIndex = 6;
+            cancelBtn.TabIndex = 12;
             cancelBtn.Text = "Cancel";
             cancelBtn.UseVisualStyleBackColor = false;
             cancelBtn.Click += cancelBtn_Click;
@@ -91,48 +59,58 @@
             saveBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
             saveBtn.FlatStyle = FlatStyle.Flat;
             saveBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            saveBtn.Location = new Point(97, 337);
+            saveBtn.Location = new Point(111, 337);
             saveBtn.Name = "saveBtn";
             saveBtn.Size = new Size(84, 33);
-            saveBtn.TabIndex = 5;
+            saveBtn.TabIndex = 11;
             saveBtn.Text = "Save";
             saveBtn.UseVisualStyleBackColor = false;
             saveBtn.Click += saveBtn_Click;
             // 
-            // crimeComboBox
+            // contactinfoTextBox
             // 
-            crimeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            crimeComboBox.FormattingEnabled = true;
-            crimeComboBox.Location = new Point(97, 259);
-            crimeComboBox.Name = "crimeComboBox";
-            crimeComboBox.Size = new Size(187, 23);
-            crimeComboBox.TabIndex = 7;
+            contactinfoTextBox.Location = new Point(111, 175);
+            contactinfoTextBox.Multiline = true;
+            contactinfoTextBox.Name = "contactinfoTextBox";
+            contactinfoTextBox.Size = new Size(187, 67);
+            contactinfoTextBox.TabIndex = 10;
             // 
-            // EvidenceEditForm
+            // specializationTextBox
+            // 
+            specializationTextBox.Location = new Point(111, 107);
+            specializationTextBox.Name = "specializationTextBox";
+            specializationTextBox.Size = new Size(187, 23);
+            specializationTextBox.TabIndex = 9;
+            // 
+            // nameTextBox
+            // 
+            nameTextBox.Location = new Point(111, 39);
+            nameTextBox.Name = "nameTextBox";
+            nameTextBox.Size = new Size(187, 23);
+            nameTextBox.TabIndex = 8;
+            // 
+            // ExpertEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(400, 382);
-            Controls.Add(crimeComboBox);
             Controls.Add(cancelBtn);
             Controls.Add(saveBtn);
-            Controls.Add(statusTextBox);
-            Controls.Add(typeTextBox);
-            Controls.Add(descriptionTextBox);
+            Controls.Add(contactinfoTextBox);
+            Controls.Add(specializationTextBox);
+            Controls.Add(nameTextBox);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "EvidenceEditForm";
-            Text = "EvidenceEditForm";
+            Name = "ExpertEditForm";
+            Text = "ExpertEditForm";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private TextBox descriptionTextBox;
-        private TextBox typeTextBox;
-        private TextBox statusTextBox;
         private Button cancelBtn;
         private Button saveBtn;
-        private ComboBox crimeComboBox;
+        private TextBox contactinfoTextBox;
+        private TextBox specializationTextBox;
+        private TextBox nameTextBox;
     }
 }

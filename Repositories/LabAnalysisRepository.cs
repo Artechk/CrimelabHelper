@@ -49,7 +49,7 @@ namespace CrimelabHelper.Repositories
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM lab_analyses WHERE AnalysisId = @AnalysisId";
+                string query = "SELECT * FROM lab_analyses WHERE analysis_id = @AnalysisId";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@AnalysisId", analysisId);
                 using (MySqlDataReader reader = command.ExecuteReader())
@@ -69,6 +69,45 @@ namespace CrimelabHelper.Repositories
             return analysis;
         }
 
-        // Додати методи для вставки, оновлення та видалення даних
+        public void AddAnalysis(LabAnalysis labAnalysis)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "INSERT INTO lab_analyses (evidence_id, date, results) VALUES (@EvidenceId, @Date, @Results)";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@EvidenceId", labAnalysis.EvidenceId);
+                command.Parameters.AddWithValue("@Date", labAnalysis.Date);
+                command.Parameters.AddWithValue("@Results", labAnalysis.Results);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void UpdateAnalysis(LabAnalysis labAnalysis)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "UPDATE lab_analyses SET evidence_id = @EvidenceId, date = @Date, results = @Results WHERE analysis_id = @AnalysisId";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@EvidenceId", labAnalysis.EvidenceId);
+                command.Parameters.AddWithValue("@Date", labAnalysis.Date);
+                command.Parameters.AddWithValue("@Results", labAnalysis.Results);
+                command.Parameters.AddWithValue("@AnalysisId", labAnalysis.AnalysisId);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteAnalysis(int analysisId)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "DELETE FROM lab_analyses WHERE analysis_id = @AnalysisId";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@AnalysisId", analysisId);
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

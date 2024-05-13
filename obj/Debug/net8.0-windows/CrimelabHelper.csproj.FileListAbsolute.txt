@@ -40,3 +40,5 @@ C:\Users\Artechk\source\repos\CrimelabHelper\CrimelabHelper\obj\Debug\net8.0-win
 C:\Users\Artechk\source\repos\CrimelabHelper\CrimelabHelper\obj\Debug\net8.0-windows\CrimelabHelper.Analysisform.resources
 C:\Users\Artechk\source\repos\CrimelabHelper\CrimelabHelper\obj\Debug\net8.0-windows\CrimelabHelper.CrimeEditForm.resources
 C:\Users\Artechk\source\repos\CrimelabHelper\CrimelabHelper\obj\Debug\net8.0-windows\CrimelabHelper.Edit_Forms.EvidenceEditForm.resources
+C:\Users\Artechk\source\repos\CrimelabHelper\CrimelabHelper\obj\Debug\net8.0-windows\CrimelabHelper.Edit_Forms.ExpertEditForm.resources
+C:\Users\Artechk\source\repos\CrimelabHelper\CrimelabHelper\obj\Debug\net8.0-windows\CrimelabHelper.Edit_Forms.AnalysisEditForm.resources

@@ -58,6 +58,8 @@
             topPanel.Name = "topPanel";
             topPanel.Size = new Size(1116, 74);
             topPanel.TabIndex = 0;
+            topPanel.MouseDown += topPanel_MouseDown;
+            topPanel.MouseMove += topPanel_MouseMove;
             // 
             // exitBtn
             // 
