@@ -19,6 +19,9 @@
     <Compile Update="Edit Forms\ExpertEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Edit Forms\ReportEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Evidenceform.cs">
       <SubType>Form</SubType>
     </Compile>

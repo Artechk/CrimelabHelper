@@ -51,7 +51,7 @@ namespace CrimelabHelper.Repositories
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM investigation_reports WHERE ReportId = @ReportId";
+                string query = "SELECT * FROM investigation_reports WHERE report_id = @ReportId";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ReportId", reportId);
                 using (MySqlDataReader reader = command.ExecuteReader())
@@ -73,6 +73,49 @@ namespace CrimelabHelper.Repositories
             return report;
         }
 
-        // Додати методи для вставки, оновлення та видалення даних
+        public void AddReport(InvestigationReport report)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "INSERT INTO investigation_reports (crime_id, date, description, conclusions, expert) VALUES (@CrimeId, @Date, @Description, @Conclusions, @ExpertId)";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@CrimeId", report.CrimeId);
+                command.Parameters.AddWithValue("@Date", report.Date);
+                command.Parameters.AddWithValue("@Description", report.Description);
+                command.Parameters.AddWithValue("@Conclusions", report.Conclusions);
+                command.Parameters.AddWithValue("@ExpertId", report.ExpertId);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void UpdateReport(InvestigationReport report)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "UPDATE investigation_reports SET expert = @ExpertId, conclusions = @Conclusions, description = @Description, date = @Date, crime_id = @CrimeId WHERE report_id = @ReportId";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ReportId", report.ReportId);
+                command.Parameters.AddWithValue("@CrimeId", report.CrimeId);
+                command.Parameters.AddWithValue("@Date", report.Date);
+                command.Parameters.AddWithValue("@Description", report.Description);
+                command.Parameters.AddWithValue("@Conclusions", report.Conclusions);
+                command.Parameters.AddWithValue("@ExpertId", report.ExpertId);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteReport(int reportId)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "DELETE FROM investigation_reports WHERE report_id = @ReportId";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ReportId", reportId);
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
