@@ -51,7 +51,7 @@ namespace CrimelabHelper.Repositories
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM suspects WHERE SuspectId = @SuspectId";
+                string query = "SELECT * FROM suspects WHERE suspect_id = @SuspectId";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@SuspectId", suspectId);
                 using (MySqlDataReader reader = command.ExecuteReader())
@@ -73,6 +73,49 @@ namespace CrimelabHelper.Repositories
             return suspect;
         }
 
-        // Додати методи для вставки, оновлення та видалення даних
+        public void AddSuspect(Suspect suspect)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "INSERT INTO suspects (name, birth_date, address, status, crime_id) VALUES (@Name, @BirthDate, @Address, @Status, @CrimeId)";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Name", suspect.Name);
+                command.Parameters.AddWithValue("@BirthDate", suspect.Birth);
+                command.Parameters.AddWithValue("@Address", suspect.Address);
+                command.Parameters.AddWithValue("@Status", suspect.Status);
+                command.Parameters.AddWithValue("@CrimeId", suspect.CrimeId);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void UpdateSuspect(Suspect suspect)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "UPDATE suspects SET name = @Name, birth_date = @BirthDate, address = @Address, status = @Status, crime_id = @CrimeId WHERE suspect_id = @SuspectId";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Name", suspect.Name);
+                command.Parameters.AddWithValue("@BirthDate", suspect.Birth);
+                command.Parameters.AddWithValue("@Address", suspect.Address);
+                command.Parameters.AddWithValue("@Status", suspect.Status);
+                command.Parameters.AddWithValue("@CrimeId", suspect.CrimeId);
+                command.Parameters.AddWithValue("@SuspectId", suspect.SuspectId);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteSuspect(int suspectId)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "DELETE FROM suspects WHERE suspect_id = @SuspectId";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@SuspectId", suspectId);
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
