@@ -35,6 +35,7 @@
             addressTextBox = new TextBox();
             statusTextBox = new TextBox();
             crimeComboBox = new ComboBox();
+            topPanel = new Panel();
             SuspendLayout();
             // 
             // cancelBtn
@@ -71,45 +72,64 @@
             // 
             // nameTextBox
             // 
-            nameTextBox.Location = new Point(143, 12);
+            nameTextBox.Location = new Point(101, 73);
             nameTextBox.Name = "nameTextBox";
-            nameTextBox.Size = new Size(100, 23);
+            nameTextBox.Size = new Size(188, 23);
             nameTextBox.TabIndex = 7;
+            nameTextBox.TextChanged += nameTextBox_TextChanged;
+            nameTextBox.Enter += nameTextBox_Enter;
+            nameTextBox.Leave += nameTextBox_Leave;
             // 
             // birthDateTimePicker
             // 
-            birthDateTimePicker.Location = new Point(101, 56);
+            birthDateTimePicker.Location = new Point(96, 112);
             birthDateTimePicker.Name = "birthDateTimePicker";
             birthDateTimePicker.Size = new Size(200, 23);
             birthDateTimePicker.TabIndex = 8;
             // 
             // addressTextBox
             // 
-            addressTextBox.Location = new Point(143, 96);
+            addressTextBox.Location = new Point(101, 153);
             addressTextBox.Name = "addressTextBox";
-            addressTextBox.Size = new Size(100, 23);
+            addressTextBox.Size = new Size(188, 23);
             addressTextBox.TabIndex = 9;
+            addressTextBox.TextChanged += addressTextBox_TextChanged;
+            addressTextBox.Enter += addressTextBox_Enter;
+            addressTextBox.Leave += addressTextBox_Leave;
             // 
             // statusTextBox
             // 
-            statusTextBox.Location = new Point(143, 143);
+            statusTextBox.Location = new Point(101, 193);
             statusTextBox.Name = "statusTextBox";
-            statusTextBox.Size = new Size(100, 23);
+            statusTextBox.Size = new Size(188, 23);
             statusTextBox.TabIndex = 10;
+            statusTextBox.TextChanged += statusTextBox_TextChanged;
+            statusTextBox.Enter += statusTextBox_Enter;
+            statusTextBox.Leave += statusTextBox_Leave;
             // 
             // crimeComboBox
             // 
             crimeComboBox.FormattingEnabled = true;
-            crimeComboBox.Location = new Point(131, 190);
+            crimeComboBox.Location = new Point(101, 235);
             crimeComboBox.Name = "crimeComboBox";
-            crimeComboBox.Size = new Size(121, 23);
+            crimeComboBox.Size = new Size(188, 23);
             crimeComboBox.TabIndex = 11;
+            // 
+            // topPanel
+            // 
+            topPanel.BackColor = Color.Teal;
+            topPanel.Dock = DockStyle.Top;
+            topPanel.Location = new Point(0, 0);
+            topPanel.Name = "topPanel";
+            topPanel.Size = new Size(400, 51);
+            topPanel.TabIndex = 12;
             // 
             // SuspectEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(400, 382);
+            Controls.Add(topPanel);
             Controls.Add(crimeComboBox);
             Controls.Add(statusTextBox);
             Controls.Add(addressTextBox);
@@ -133,5 +153,6 @@
         private TextBox addressTextBox;
         private TextBox statusTextBox;
         private ComboBox crimeComboBox;
+        private Panel topPanel;
     }
 }

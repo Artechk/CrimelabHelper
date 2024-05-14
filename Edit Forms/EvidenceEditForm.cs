@@ -68,8 +68,8 @@ namespace CrimelabHelper.Edit_Forms
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            if (descriptionTextBox.Text == "Description of the evidence"||
-                typeTextBox.Text == "Type of the evidence"||
+            if (descriptionTextBox.Text == "Description of the evidence" ||
+                typeTextBox.Text == "Type of the evidence" ||
                 statusTextBox.Text == "Status of the evidence")
             {
                 MessageBox.Show("Заполните все поля.");
@@ -97,7 +97,7 @@ namespace CrimelabHelper.Edit_Forms
 
         private void descriptionTextBox_Enter(object sender, EventArgs e)
         {
-            
+
             if (descriptionTextBox.Text == "Description of the evidence")
             {
                 descriptionTextBox.Text = "";
@@ -107,7 +107,7 @@ namespace CrimelabHelper.Edit_Forms
 
         private void descriptionTextBox_Leave(object sender, EventArgs e)
         {
-            
+
             if (string.IsNullOrWhiteSpace(descriptionTextBox.Text))
             {
                 descriptionTextBox.Text = "Description of the evidence";
@@ -117,7 +117,7 @@ namespace CrimelabHelper.Edit_Forms
 
         private void descriptionTextBox_TextChanged(object sender, EventArgs e)
         {
-            
+
             if (descriptionTextBox.ForeColor == Color.Gray)
             {
                 descriptionTextBox.ForeColor = SystemColors.WindowText;
@@ -129,7 +129,7 @@ namespace CrimelabHelper.Edit_Forms
             if (typeTextBox.Text == "Type of the evidence")
             {
                 typeTextBox.Text = "";
-                typeTextBox.ForeColor = SystemColors.WindowText; 
+                typeTextBox.ForeColor = SystemColors.WindowText;
             }
         }
 
@@ -155,7 +155,7 @@ namespace CrimelabHelper.Edit_Forms
             if (statusTextBox.Text == "Status of the evidence")
             {
                 statusTextBox.Text = "";
-                statusTextBox.ForeColor = SystemColors.WindowText; 
+                statusTextBox.ForeColor = SystemColors.WindowText;
             }
         }
 

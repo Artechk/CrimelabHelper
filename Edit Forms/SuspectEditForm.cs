@@ -29,16 +29,31 @@ namespace CrimelabHelper.Edit_Forms
 
             LoadCrimes();
 
-            nameTextBox.Text = suspect.Name;
-            if (suspect.Birth != DateTime.MinValue)
-                birthDateTimePicker.Value = suspect.Birth;
-            addressTextBox.Text = suspect.Address;
-            statusTextBox.Text = suspect.Status;
-
-            if (suspect.CrimeId != 0)
+            if (string.IsNullOrWhiteSpace(suspect.Name) &&
+                string.IsNullOrWhiteSpace(suspect.Address) &&
+                string.IsNullOrWhiteSpace(suspect.Status))
             {
-                crimeComboBox.SelectedValue = suspect.CrimeId;
+                nameTextBox.Text = "Name of the suspect";
+                nameTextBox.ForeColor = Color.Gray;
+                addressTextBox.Text = "Suspect's known addresses";
+                addressTextBox.ForeColor = Color.Gray;
+                statusTextBox.Text = "Status of the suspect";
+                statusTextBox.ForeColor = Color.Gray;
             }
+            else
+            {
+                nameTextBox.Text = suspect.Name;
+                if (suspect.Birth != DateTime.MinValue)
+                    birthDateTimePicker.Value = suspect.Birth;
+                addressTextBox.Text = suspect.Address;
+                statusTextBox.Text = suspect.Status;
+
+                if (suspect.CrimeId != 0)
+                {
+                    crimeComboBox.SelectedValue = suspect.CrimeId;
+                }
+            }
+            
         }
 
         private void LoadCrimes()
@@ -57,10 +72,9 @@ namespace CrimelabHelper.Edit_Forms
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(nameTextBox.Text) ||
-                string.IsNullOrWhiteSpace(addressTextBox.Text) ||
-                string.IsNullOrWhiteSpace(statusTextBox.Text) ||
-                string.IsNullOrWhiteSpace(crimeComboBox.Text))
+            if (nameTextBox.Text == "Name of the suspect" ||
+                addressTextBox.Text == "Suspect's known addresses" ||
+                statusTextBox.Text == "Status of the suspect") 
             {
                 MessageBox.Show("Заполните все поля.");
                 return;
@@ -80,6 +94,86 @@ namespace CrimelabHelper.Edit_Forms
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        //-------------------------------style-------------------------------------------------------------------------
+
+        private void nameTextBox_Enter(object sender, EventArgs e)
+        {
+            if (nameTextBox.Text == "Name of the suspect")
+            {
+                nameTextBox.Text = "";
+                nameTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void nameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (nameTextBox.ForeColor == Color.Gray)
+            {
+                nameTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void nameTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(nameTextBox.Text))
+            {
+                nameTextBox.Text = "Name of the suspect";
+                nameTextBox.ForeColor = Color.Gray;
+            }
+        }
+
+        private void addressTextBox_Enter(object sender, EventArgs e)
+        {
+            if (addressTextBox.Text == "Suspect's known addresses")
+            {
+                addressTextBox.Text = "";
+                addressTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void addressTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (addressTextBox.ForeColor == Color.Gray)
+            {
+                addressTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void addressTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(addressTextBox.Text))
+            {
+                addressTextBox.Text = "Suspect's known addresses";
+                addressTextBox.ForeColor = Color.Gray;
+            }
+        }
+
+        private void statusTextBox_Enter(object sender, EventArgs e)
+        {
+            if (statusTextBox.Text == "Status of the suspect")
+            {
+                statusTextBox.Text = "";
+                statusTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void statusTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (statusTextBox.ForeColor == Color.Gray)
+            {
+                statusTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void statusTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(statusTextBox.Text))
+            {
+                statusTextBox.Text = "Status of the suspect";
+                statusTextBox.ForeColor = Color.Gray;
+            }
         }
     }
 }
