@@ -34,35 +34,36 @@
             cancelBtn = new Button();
             saveBtn = new Button();
             crimeComboBox = new ComboBox();
+            topPanel = new Panel();
             SuspendLayout();
             // 
             // descriptionTextBox
             // 
-            descriptionTextBox.Location = new Point(12, 12);
+            descriptionTextBox.Location = new Point(12, 83);
             descriptionTextBox.Multiline = true;
             descriptionTextBox.Name = "descriptionTextBox";
             descriptionTextBox.Size = new Size(376, 149);
-            descriptionTextBox.TabIndex = 0;
+            descriptionTextBox.TabIndex = 1;
             descriptionTextBox.TextChanged += descriptionTextBox_TextChanged;
             descriptionTextBox.Enter += descriptionTextBox_Enter;
             descriptionTextBox.Leave += descriptionTextBox_Leave;
             // 
             // typeTextBox
             // 
-            typeTextBox.Location = new Point(97, 179);
+            typeTextBox.Location = new Point(97, 250);
             typeTextBox.Name = "typeTextBox";
             typeTextBox.Size = new Size(187, 23);
-            typeTextBox.TabIndex = 1;
+            typeTextBox.TabIndex = 2;
             typeTextBox.TextChanged += typeTextBox_TextChanged;
             typeTextBox.Enter += typeTextBox_Enter;
             typeTextBox.Leave += typeTextBox_Leave;
             // 
             // statusTextBox
             // 
-            statusTextBox.Location = new Point(97, 220);
+            statusTextBox.Location = new Point(97, 291);
             statusTextBox.Name = "statusTextBox";
             statusTextBox.Size = new Size(187, 23);
-            statusTextBox.TabIndex = 2;
+            statusTextBox.TabIndex = 3;
             statusTextBox.TextChanged += statusTextBox_TextChanged;
             statusTextBox.Enter += statusTextBox_Enter;
             statusTextBox.Leave += statusTextBox_Leave;
@@ -75,10 +76,10 @@
             cancelBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
             cancelBtn.FlatStyle = FlatStyle.Flat;
             cancelBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cancelBtn.Location = new Point(200, 337);
+            cancelBtn.Location = new Point(200, 408);
             cancelBtn.Name = "cancelBtn";
             cancelBtn.Size = new Size(84, 33);
-            cancelBtn.TabIndex = 6;
+            cancelBtn.TabIndex = 0;
             cancelBtn.Text = "Cancel";
             cancelBtn.UseVisualStyleBackColor = false;
             cancelBtn.Click += cancelBtn_Click;
@@ -91,7 +92,7 @@
             saveBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
             saveBtn.FlatStyle = FlatStyle.Flat;
             saveBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            saveBtn.Location = new Point(97, 337);
+            saveBtn.Location = new Point(97, 408);
             saveBtn.Name = "saveBtn";
             saveBtn.Size = new Size(84, 33);
             saveBtn.TabIndex = 5;
@@ -103,16 +104,28 @@
             // 
             crimeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             crimeComboBox.FormattingEnabled = true;
-            crimeComboBox.Location = new Point(97, 259);
+            crimeComboBox.Location = new Point(97, 330);
             crimeComboBox.Name = "crimeComboBox";
             crimeComboBox.Size = new Size(187, 23);
-            crimeComboBox.TabIndex = 7;
+            crimeComboBox.TabIndex = 4;
+            // 
+            // topPanel
+            // 
+            topPanel.BackColor = Color.Teal;
+            topPanel.Dock = DockStyle.Top;
+            topPanel.Location = new Point(0, 0);
+            topPanel.Name = "topPanel";
+            topPanel.Size = new Size(400, 51);
+            topPanel.TabIndex = 8;
+            topPanel.MouseDown += topPanel_MouseDown;
+            topPanel.MouseMove += topPanel_MouseMove;
             // 
             // EvidenceEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(400, 382);
+            ClientSize = new Size(400, 459);
+            Controls.Add(topPanel);
             Controls.Add(crimeComboBox);
             Controls.Add(cancelBtn);
             Controls.Add(saveBtn);
@@ -121,7 +134,7 @@
             Controls.Add(descriptionTextBox);
             FormBorderStyle = FormBorderStyle.None;
             Name = "EvidenceEditForm";
-            Text = "EvidenceEditForm";
+            Text = "In the shadowy corner, a lone pineapple slice perched on a murder weapon, the ultimate fruit of deception...";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -134,5 +147,6 @@
         private Button cancelBtn;
         private Button saveBtn;
         private ComboBox crimeComboBox;
+        private Panel topPanel;
     }
 }
