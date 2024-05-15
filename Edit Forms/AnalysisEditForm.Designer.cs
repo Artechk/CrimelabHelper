@@ -103,6 +103,8 @@
             topPanel.Name = "topPanel";
             topPanel.Size = new Size(400, 38);
             topPanel.TabIndex = 10;
+            topPanel.MouseMove += topPanel_MouseMove;
+            topPanel.MouseDown += topPanel_MouseDown;
             // 
             // AnalysisEditForm
             // 
