@@ -35,6 +35,7 @@
             descriptionTextBox = new TextBox();
             repConclusionsTextBox = new TextBox();
             reportDateTimePicker = new DateTimePicker();
+            topPanel = new Panel();
             SuspendLayout();
             // 
             // cancelBtn
@@ -72,7 +73,7 @@
             // crimeComboBox
             // 
             crimeComboBox.FormattingEnabled = true;
-            crimeComboBox.Location = new Point(12, 12);
+            crimeComboBox.Location = new Point(11, 42);
             crimeComboBox.Name = "crimeComboBox";
             crimeComboBox.Size = new Size(31, 23);
             crimeComboBox.TabIndex = 15;
@@ -80,38 +81,56 @@
             // expertComboBox
             // 
             expertComboBox.FormattingEnabled = true;
-            expertComboBox.Location = new Point(218, 286);
+            expertComboBox.Location = new Point(217, 305);
             expertComboBox.Name = "expertComboBox";
             expertComboBox.Size = new Size(170, 23);
             expertComboBox.TabIndex = 16;
             // 
             // descriptionTextBox
             // 
-            descriptionTextBox.Location = new Point(49, 12);
+            descriptionTextBox.Location = new Point(48, 42);
             descriptionTextBox.Name = "descriptionTextBox";
             descriptionTextBox.Size = new Size(339, 23);
             descriptionTextBox.TabIndex = 17;
+            descriptionTextBox.Enter += descriptionTextBox_Enter;
+            descriptionTextBox.Leave += descriptionTextBox_Leave;
+            descriptionTextBox.TextChanged += descriptionTextBox_TextChanged;
             // 
             // repConclusionsTextBox
             // 
-            repConclusionsTextBox.Location = new Point(13, 41);
+            repConclusionsTextBox.Location = new Point(12, 71);
             repConclusionsTextBox.Multiline = true;
             repConclusionsTextBox.Name = "repConclusionsTextBox";
-            repConclusionsTextBox.Size = new Size(376, 239);
+            repConclusionsTextBox.Size = new Size(376, 228);
             repConclusionsTextBox.TabIndex = 18;
+            repConclusionsTextBox.Enter += repConclusionsTextBox_Enter;
+            repConclusionsTextBox.Leave += repConclusionsTextBox_Leave;
+            repConclusionsTextBox.TextChanged += repConclusionsTextBox_TextChanged;
             // 
             // reportDateTimePicker
             // 
-            reportDateTimePicker.Location = new Point(12, 286);
+            reportDateTimePicker.Location = new Point(11, 305);
             reportDateTimePicker.Name = "reportDateTimePicker";
             reportDateTimePicker.Size = new Size(200, 23);
             reportDateTimePicker.TabIndex = 19;
+            // 
+            // topPanel
+            // 
+            topPanel.BackColor = Color.Teal;
+            topPanel.Dock = DockStyle.Top;
+            topPanel.Location = new Point(0, 0);
+            topPanel.Name = "topPanel";
+            topPanel.Size = new Size(400, 36);
+            topPanel.TabIndex = 20;
+            topPanel.MouseMove += topPanel_MouseMove;
+            topPanel.MouseDown += topPanel_MouseDown;
             // 
             // ReportEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(400, 382);
+            Controls.Add(topPanel);
             Controls.Add(reportDateTimePicker);
             Controls.Add(repConclusionsTextBox);
             Controls.Add(descriptionTextBox);
@@ -134,5 +153,6 @@
         private TextBox descriptionTextBox;
         private TextBox repConclusionsTextBox;
         private DateTimePicker reportDateTimePicker;
+        private Panel topPanel;
     }
 }

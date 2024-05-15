@@ -38,7 +38,7 @@ namespace CrimelabHelper
         {
             if (reportsList.SelectedRows.Count > 0)
             {
-                selectedReportId = (int)reportsList.SelectedRows[0].Cells["ExpertId"].Value;
+                selectedReportId = (int)reportsList.SelectedRows[0].Cells["ReportId"].Value;
             }
             else
             {

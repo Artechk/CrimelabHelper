@@ -17,14 +17,13 @@ namespace CrimelabHelper.Edit_Forms
         private InvestigationReport report;
         private CrimeRepository crimeRepository;
         private ExpertRepository expertRepository;
+
         public ReportEditForm(InvestigationReport report)
         {
             InitializeComponent();
             this.report = report;
 
-            // Встановлюємо мінімальну дату як 01.01.1900
             reportDateTimePicker.MinDate = new DateTime(1900, 1, 1);
-            // Встановлюємо максимальну дату як поточну дату
             reportDateTimePicker.MaxDate = DateTime.Today;
 
             string connectionString = "server=localhost;user=root;database=crimelab";
@@ -34,75 +33,70 @@ namespace CrimelabHelper.Edit_Forms
             LoadCrimes();
             LoadExperts();
 
-            descriptionTextBox.Text = report.Description;
-            repConclusionsTextBox.Text = report.Conclusions;
-            if (report.Date != DateTime.MinValue)
-                reportDateTimePicker.Value = report.Date;
-
-            if (report.CrimeId != 0)
+            if (report == null || string.IsNullOrWhiteSpace(report.Description) &&
+                string.IsNullOrWhiteSpace(report.Conclusions))
             {
-                crimeComboBox.SelectedValue = report.CrimeId;
+                descriptionTextBox.Text = "Description of the report";
+                descriptionTextBox.ForeColor = Color.Gray;
+                repConclusionsTextBox.Text = "Conclusions of the report";
+                repConclusionsTextBox.ForeColor = Color.Gray;
             }
-
-            if (report.ExpertId != 0)
+            else
             {
-                expertComboBox.SelectedValue = report.ExpertId;
+                descriptionTextBox.Text = report.Description;
+                repConclusionsTextBox.Text = report.Conclusions;
+                if (report.Date != DateTime.MinValue)
+                    reportDateTimePicker.Value = report.Date;
+
+                if (report.CrimeId != 0)
+                    crimeComboBox.SelectedValue = report.CrimeId;
+
+                if (report.ExpertId != 0)
+                    expertComboBox.SelectedValue = report.ExpertId;
             }
         }
 
         private void LoadCrimes()
         {
-            // Получаем список преступлений из базы данных
             List<Crime> crimes = crimeRepository.GetAllCrimes();
 
-            // Заполняем ComboBox списком преступлений
-            crimeComboBox.DisplayMember = "CrimeId"; // Отображаемое значение - описание преступления
-            crimeComboBox.ValueMember = "CrimeId"; // Значение элемента - идентификатор преступления
+            crimeComboBox.DisplayMember = "CrimeId";
+            crimeComboBox.ValueMember = "CrimeId";
             crimeComboBox.DataSource = crimes;
 
-            // Если доказательство уже связано с каким-то преступлением, выбираем это преступление в ComboBox
             if (report.CrimeId != 0)
-            {
                 crimeComboBox.SelectedValue = report.CrimeId;
-            }
         }
 
         private void LoadExperts()
         {
-            // Получаем список преступлений из базы данных
             List<Expert> experts = expertRepository.GetAllExperts();
 
-            // Заполняем ComboBox списком преступлений
-            expertComboBox.DisplayMember = "ExpertId"; // Отображаемое значение - описание преступления
-            expertComboBox.ValueMember = "ExpertId"; // Значение элемента - идентификатор преступления
+            expertComboBox.DisplayMember = "ExpertId";
+            expertComboBox.ValueMember = "ExpertId";
             expertComboBox.DataSource = experts;
 
-            // Если доказательство уже связано с каким-то преступлением, выбираем это преступление в ComboBox
             if (report.ExpertId != 0)
-            {
                 expertComboBox.SelectedValue = report.ExpertId;
-            }
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(descriptionTextBox.Text) ||
-                string.IsNullOrWhiteSpace(repConclusionsTextBox.Text) ||
+            if (descriptionTextBox.Text == "Description of the report" ||
+                repConclusionsTextBox.Text == "Conclusions of the report" ||
                 string.IsNullOrWhiteSpace(expertComboBox.Text) ||
                 string.IsNullOrWhiteSpace(crimeComboBox.Text))
             {
-                MessageBox.Show("Заполните все поля.");
+                MessageBox.Show("Fill in all fields.");
                 return;
             }
 
-            // Обновляем поля доказа
             report.CrimeId = (int)crimeComboBox.SelectedValue;
             report.Description = descriptionTextBox.Text;
             report.Conclusions = repConclusionsTextBox.Text;
             report.ExpertId = (int)expertComboBox.SelectedValue;
             report.Date = reportDateTimePicker.Value;
 
-            // Закрываем форму с результатом DialogResult.OK
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -111,6 +105,76 @@ namespace CrimelabHelper.Edit_Forms
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        //---------------------------------style---------------------------------------------------------
+
+        private void descriptionTextBox_Enter(object sender, EventArgs e)
+        {
+            if (descriptionTextBox.Text == "Description of the report")
+            {
+                descriptionTextBox.Text = "";
+                descriptionTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void descriptionTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(descriptionTextBox.Text))
+            {
+                descriptionTextBox.Text = "Description of the report";
+                descriptionTextBox.ForeColor = Color.Gray;
+            }
+        }
+
+        private void descriptionTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (descriptionTextBox.ForeColor == Color.Gray)
+            {
+                descriptionTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void repConclusionsTextBox_Enter(object sender, EventArgs e)
+        {
+            if (repConclusionsTextBox.Text == "Conclusions of the report")
+            {
+                repConclusionsTextBox.Text = "";
+                repConclusionsTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void repConclusionsTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(repConclusionsTextBox.Text))
+            {
+                repConclusionsTextBox.Text = "Conclusions of the report";
+                repConclusionsTextBox.ForeColor = Color.Gray;
+            }
+        }
+
+        private void repConclusionsTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (repConclusionsTextBox.ForeColor == Color.Gray)
+            {
+                repConclusionsTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        Point lastPoint;
+
+        private void topPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void topPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
         }
     }
 }
