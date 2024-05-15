@@ -109,6 +109,7 @@
             // 
             // crimeComboBox
             // 
+            crimeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             crimeComboBox.FormattingEnabled = true;
             crimeComboBox.Location = new Point(101, 235);
             crimeComboBox.Name = "crimeComboBox";

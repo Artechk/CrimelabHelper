@@ -72,6 +72,7 @@
             // 
             // crimeComboBox
             // 
+            crimeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             crimeComboBox.FormattingEnabled = true;
             crimeComboBox.Location = new Point(11, 42);
             crimeComboBox.Name = "crimeComboBox";
@@ -80,6 +81,7 @@
             // 
             // expertComboBox
             // 
+            expertComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             expertComboBox.FormattingEnabled = true;
             expertComboBox.Location = new Point(217, 305);
             expertComboBox.Name = "expertComboBox";
@@ -92,9 +94,9 @@
             descriptionTextBox.Name = "descriptionTextBox";
             descriptionTextBox.Size = new Size(339, 23);
             descriptionTextBox.TabIndex = 17;
+            descriptionTextBox.TextChanged += descriptionTextBox_TextChanged;
             descriptionTextBox.Enter += descriptionTextBox_Enter;
             descriptionTextBox.Leave += descriptionTextBox_Leave;
-            descriptionTextBox.TextChanged += descriptionTextBox_TextChanged;
             // 
             // repConclusionsTextBox
             // 
@@ -103,9 +105,9 @@
             repConclusionsTextBox.Name = "repConclusionsTextBox";
             repConclusionsTextBox.Size = new Size(376, 228);
             repConclusionsTextBox.TabIndex = 18;
+            repConclusionsTextBox.TextChanged += repConclusionsTextBox_TextChanged;
             repConclusionsTextBox.Enter += repConclusionsTextBox_Enter;
             repConclusionsTextBox.Leave += repConclusionsTextBox_Leave;
-            repConclusionsTextBox.TextChanged += repConclusionsTextBox_TextChanged;
             // 
             // reportDateTimePicker
             // 
@@ -122,8 +124,8 @@
             topPanel.Name = "topPanel";
             topPanel.Size = new Size(400, 36);
             topPanel.TabIndex = 20;
-            topPanel.MouseMove += topPanel_MouseMove;
             topPanel.MouseDown += topPanel_MouseDown;
+            topPanel.MouseMove += topPanel_MouseMove;
             // 
             // ReportEditForm
             // 
