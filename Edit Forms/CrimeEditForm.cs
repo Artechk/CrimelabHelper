@@ -13,16 +13,20 @@ namespace CrimelabHelper
             InitializeComponent();
             this.crime = crime;
 
-            // Встановлюємо мінімальну дату як 01.01.1900
             dateDateTimePicker.MinDate = new DateTime(1900, 1, 1);
-            // Встановлюємо максимальну дату як поточну дату
             dateDateTimePicker.MaxDate = DateTime.Today;
 
-            // Якщо передано преступлення, виведемо його дані у відповідних полях
-            if (crime != null)
+            if (crime == null || string.IsNullOrWhiteSpace(crime.Description) &&
+                string.IsNullOrWhiteSpace(crime.Type))
+            {
+                descriptionTextBox.Text = "Description of the crime";
+                descriptionTextBox.ForeColor = Color.Gray;
+                typeTextBox.Text = "Type of the crime";
+                typeTextBox.ForeColor = Color.Gray;
+            }
+            else
             {
                 descriptionTextBox.Text = crime.Description;
-                // Перевіряємо, чи дата не є мінімальною
                 if (crime.Date != DateTime.MinValue)
                     dateDateTimePicker.Value = crime.Date;
                 typeTextBox.Text = crime.Type;
@@ -31,21 +35,97 @@ namespace CrimelabHelper
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            // Зберігаємо дані з полів у преступлення
+            if (descriptionTextBox.Text == "Description of the crime" ||
+                typeTextBox.Text == "Type of the crime")
+            {
+                MessageBox.Show("Fill in all fields.");
+                return;
+            }
+
             crime.Description = descriptionTextBox.Text;
             crime.Date = dateDateTimePicker.Value;
             crime.Type = typeTextBox.Text;
 
-            // Закриваємо форму з результатом DialogResult.OK
             DialogResult = DialogResult.OK;
             Close();
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
-            // Закриваємо форму з результатом DialogResult.Cancel
             DialogResult = DialogResult.Cancel;
             Close();
         }
+
+        //---------------------------------style---------------------------------------------------------
+
+        private void descriptionTextBox_Enter(object sender, EventArgs e)
+        {
+            if (descriptionTextBox.Text == "Description of the crime")
+            {
+                descriptionTextBox.Text = "";
+                descriptionTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void descriptionTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(descriptionTextBox.Text))
+            {
+                descriptionTextBox.Text = "Description of the crime";
+                descriptionTextBox.ForeColor = Color.Gray;
+            }
+        }
+
+        private void descriptionTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (descriptionTextBox.ForeColor == Color.Gray)
+            {
+                descriptionTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void typeTextBox_Enter(object sender, EventArgs e)
+        {
+            if (typeTextBox.Text == "Type of the crime")
+            {
+                typeTextBox.Text = "";
+                typeTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void typeTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(typeTextBox.Text))
+            {
+                typeTextBox.Text = "Type of the crime";
+                typeTextBox.ForeColor = Color.Gray;
+            }
+        }
+
+        private void typeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (typeTextBox.ForeColor == Color.Gray)
+            {
+                typeTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+
+        Point lastPoint;
+
+        private void topPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void topPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
     }
 }

@@ -195,7 +195,7 @@
             crimeBtn.Name = "crimeBtn";
             crimeBtn.Size = new Size(118, 51);
             crimeBtn.TabIndex = 1;
-            crimeBtn.Text = "Crime";
+            crimeBtn.Text = "Crimes";
             crimeBtn.UseVisualStyleBackColor = false;
             crimeBtn.Click += crimeBtn_Click;
             // 
