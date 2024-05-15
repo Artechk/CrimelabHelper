@@ -123,6 +123,8 @@
             topPanel.Name = "topPanel";
             topPanel.Size = new Size(400, 51);
             topPanel.TabIndex = 12;
+            topPanel.MouseDown += topPanel_MouseDown;
+            topPanel.MouseMove += topPanel_MouseMove;
             // 
             // SuspectEditForm
             // 

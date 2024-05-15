@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CrimelabHelper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc56ba13cd9ba7ea9b39a98257141fef48678852")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+60f5e4887aac41ee74d95ef108ba02fef124e95e")]
 [assembly: System.Reflection.AssemblyProductAttribute("CrimelabHelper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CrimelabHelper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
