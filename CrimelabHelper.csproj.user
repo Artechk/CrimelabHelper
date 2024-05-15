@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="Analysisform.cs">
+    <Compile Update="Content Forms\Analysisform.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Edit Forms\AnalysisEditForm.cs">
@@ -10,7 +10,7 @@
     <Compile Update="Edit Forms\CrimeEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Crimesform.cs">
+    <Compile Update="Content Forms\Crimesform.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Edit Forms\EvidenceEditForm.cs">
@@ -25,10 +25,10 @@
     <Compile Update="Edit Forms\SuspectEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Evidenceform.cs">
+    <Compile Update="Content Forms\Evidenceform.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Expertsform.cs">
+    <Compile Update="Content Forms\Expertsform.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form1.cs">
@@ -37,10 +37,10 @@
     <Compile Update="Homeform.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Reportsform.cs">
+    <Compile Update="Content Forms\Reportsform.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Suspectsform.cs">
+    <Compile Update="Content Forms\Suspectsform.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
