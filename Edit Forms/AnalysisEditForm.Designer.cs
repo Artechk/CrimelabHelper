@@ -33,6 +33,7 @@
             resultTextBox = new TextBox();
             dateTimePicker1 = new DateTimePicker();
             evidenceComboBox = new ComboBox();
+            topPanel = new Panel();
             SuspendLayout();
             // 
             // cancelBtn
@@ -69,15 +70,18 @@
             // 
             // resultTextBox
             // 
-            resultTextBox.Location = new Point(12, 12);
+            resultTextBox.Location = new Point(12, 44);
             resultTextBox.Multiline = true;
             resultTextBox.Name = "resultTextBox";
-            resultTextBox.Size = new Size(376, 242);
+            resultTextBox.Size = new Size(376, 207);
             resultTextBox.TabIndex = 7;
+            resultTextBox.Enter += resultTextBox_Enter;
+            resultTextBox.Leave += resultTextBox_Leave;
+            resultTextBox.TextChanged += resultTextBox_TextChanged;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(12, 272);
+            dateTimePicker1.Location = new Point(12, 269);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(209, 23);
             dateTimePicker1.TabIndex = 8;
@@ -86,16 +90,26 @@
             // 
             evidenceComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             evidenceComboBox.FormattingEnabled = true;
-            evidenceComboBox.Location = new Point(331, 272);
+            evidenceComboBox.Location = new Point(331, 269);
             evidenceComboBox.Name = "evidenceComboBox";
             evidenceComboBox.Size = new Size(57, 23);
             evidenceComboBox.TabIndex = 9;
+            // 
+            // topPanel
+            // 
+            topPanel.BackColor = Color.Teal;
+            topPanel.Dock = DockStyle.Top;
+            topPanel.Location = new Point(0, 0);
+            topPanel.Name = "topPanel";
+            topPanel.Size = new Size(400, 38);
+            topPanel.TabIndex = 10;
             // 
             // AnalysisEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(400, 382);
+            Controls.Add(topPanel);
             Controls.Add(evidenceComboBox);
             Controls.Add(dateTimePicker1);
             Controls.Add(resultTextBox);
@@ -115,5 +129,6 @@
         private TextBox resultTextBox;
         private DateTimePicker dateTimePicker1;
         private ComboBox evidenceComboBox;
+        private Panel topPanel;
     }
 }

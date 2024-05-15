@@ -16,6 +16,7 @@ namespace CrimelabHelper.Edit_Forms
     {
         private EvidenceRepository evidenceRepository;
         private LabAnalysis analysis;
+
         public AnalysisEditForm(LabAnalysis analysis)
         {
             InitializeComponent();
@@ -29,13 +30,19 @@ namespace CrimelabHelper.Edit_Forms
 
             LoadEvidences();
 
-            resultTextBox.Text = analysis.Results;
-            if (analysis.Date != DateTime.MinValue)
-                dateTimePicker1.Value = analysis.Date;
-
-            if (analysis.EvidenceId != 0)
+            if (analysis == null || string.IsNullOrWhiteSpace(analysis.Results))
             {
-                evidenceComboBox.SelectedValue = analysis.EvidenceId;
+                resultTextBox.Text = "Results of the analysis";
+                resultTextBox.ForeColor = Color.Gray;
+            }
+            else
+            {
+                resultTextBox.Text = analysis.Results;
+                if (analysis.Date != DateTime.MinValue)
+                    dateTimePicker1.Value = analysis.Date;
+
+                if (analysis.EvidenceId != 0)
+                    evidenceComboBox.SelectedValue = analysis.EvidenceId;
             }
         }
 
@@ -48,36 +55,58 @@ namespace CrimelabHelper.Edit_Forms
             evidenceComboBox.DataSource = evidences;
 
             if (analysis.EvidenceId != 0)
-            {
                 evidenceComboBox.SelectedValue = analysis.EvidenceId;
-            }
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            // Проверяем заполнение полей
-            if (string.IsNullOrWhiteSpace(resultTextBox.Text) ||
+            if (resultTextBox.Text == "Results of the analysis" ||
                 string.IsNullOrWhiteSpace(evidenceComboBox.Text))
             {
-                MessageBox.Show("Заполните все поля.");
+                MessageBox.Show("Fill in all fields.");
                 return;
             }
 
-            // Обновляем поля доказа
             analysis.Results = resultTextBox.Text;
             analysis.Date = dateTimePicker1.Value;
             analysis.EvidenceId = (int)evidenceComboBox.SelectedValue;
 
-            // Закрываем форму с результатом DialogResult.OK
             DialogResult = DialogResult.OK;
             Close();
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
-            // Закрываем форму с результатом DialogResult.Cancel
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        //---------------------------------style---------------------------------------------------------
+
+        private void resultTextBox_Enter(object sender, EventArgs e)
+        {
+            if (resultTextBox.Text == "Results of the analysis")
+            {
+                resultTextBox.Text = "";
+                resultTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void resultTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(resultTextBox.Text))
+            {
+                resultTextBox.Text = "Results of the analysis";
+                resultTextBox.ForeColor = Color.Gray;
+            }
+        }
+
+        private void resultTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (resultTextBox.ForeColor == Color.Gray)
+            {
+                resultTextBox.ForeColor = SystemColors.WindowText;
+            }
         }
     }
 }
