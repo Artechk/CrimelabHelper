@@ -33,6 +33,7 @@
             contactinfoTextBox = new TextBox();
             specializationTextBox = new TextBox();
             nameTextBox = new TextBox();
+            topPanel = new Panel();
             SuspendLayout();
             // 
             // cancelBtn
@@ -69,31 +70,53 @@
             // 
             // contactinfoTextBox
             // 
-            contactinfoTextBox.Location = new Point(111, 175);
+            contactinfoTextBox.Location = new Point(111, 233);
             contactinfoTextBox.Multiline = true;
             contactinfoTextBox.Name = "contactinfoTextBox";
             contactinfoTextBox.Size = new Size(187, 67);
             contactinfoTextBox.TabIndex = 10;
+            contactinfoTextBox.TextChanged += contactinfoTextBox_TextChanged;
+            contactinfoTextBox.Enter += contactinfoTextBox_Enter;
+            contactinfoTextBox.Leave += contactinfoTextBox_Leave;
             // 
             // specializationTextBox
             // 
-            specializationTextBox.Location = new Point(111, 107);
+            specializationTextBox.Location = new Point(111, 142);
+            specializationTextBox.Multiline = true;
             specializationTextBox.Name = "specializationTextBox";
-            specializationTextBox.Size = new Size(187, 23);
+            specializationTextBox.Size = new Size(187, 67);
             specializationTextBox.TabIndex = 9;
+            specializationTextBox.TextChanged += specializationTextBox_TextChanged;
+            specializationTextBox.Enter += specializationTextBox_Enter;
+            specializationTextBox.Leave += specializationTextBox_Leave;
             // 
             // nameTextBox
             // 
-            nameTextBox.Location = new Point(111, 39);
+            nameTextBox.Location = new Point(111, 81);
             nameTextBox.Name = "nameTextBox";
             nameTextBox.Size = new Size(187, 23);
             nameTextBox.TabIndex = 8;
+            nameTextBox.TextChanged += nameTextBox_TextChanged;
+            nameTextBox.Enter += nameTextBox_Enter;
+            nameTextBox.Leave += nameTextBox_Leave;
+            // 
+            // topPanel
+            // 
+            topPanel.BackColor = Color.Teal;
+            topPanel.Dock = DockStyle.Top;
+            topPanel.Location = new Point(0, 0);
+            topPanel.Name = "topPanel";
+            topPanel.Size = new Size(400, 51);
+            topPanel.TabIndex = 13;
+            topPanel.MouseMove += topPanel_MouseMove;
+            topPanel.MouseDown += topPanel_MouseDown;
             // 
             // ExpertEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(400, 382);
+            Controls.Add(topPanel);
             Controls.Add(cancelBtn);
             Controls.Add(saveBtn);
             Controls.Add(contactinfoTextBox);
@@ -106,11 +129,14 @@
             PerformLayout();
         }
 
+
+
         #endregion
         private Button cancelBtn;
         private Button saveBtn;
         private TextBox contactinfoTextBox;
         private TextBox specializationTextBox;
         private TextBox nameTextBox;
+        private Panel topPanel;
     }
 }
