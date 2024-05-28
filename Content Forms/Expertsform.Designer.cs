@@ -32,6 +32,7 @@
             deleteBtn = new Button();
             editBtn = new Button();
             addBtn = new Button();
+            totalrepBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)expertsList).BeginInit();
             SuspendLayout();
             // 
@@ -95,11 +96,28 @@
             addBtn.UseVisualStyleBackColor = false;
             addBtn.Click += addBtn_Click;
             // 
+            // totalrepBtn
+            // 
+            totalrepBtn.BackColor = Color.WhiteSmoke;
+            totalrepBtn.FlatAppearance.BorderColor = Color.Gainsboro;
+            totalrepBtn.FlatAppearance.BorderSize = 2;
+            totalrepBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+            totalrepBtn.FlatStyle = FlatStyle.Flat;
+            totalrepBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            totalrepBtn.Location = new Point(986, 276);
+            totalrepBtn.Name = "totalrepBtn";
+            totalrepBtn.Size = new Size(118, 51);
+            totalrepBtn.TabIndex = 8;
+            totalrepBtn.Text = "Total";
+            totalrepBtn.UseVisualStyleBackColor = false;
+            totalrepBtn.Click += totalrepBtn_Click;
+            // 
             // Expertsform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1116, 453);
+            Controls.Add(totalrepBtn);
             Controls.Add(deleteBtn);
             Controls.Add(editBtn);
             Controls.Add(addBtn);
@@ -117,5 +135,6 @@
         private Button deleteBtn;
         private Button editBtn;
         private Button addBtn;
+        private Button totalrepBtn;
     }
 }

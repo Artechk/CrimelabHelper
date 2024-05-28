@@ -106,6 +106,38 @@ namespace CrimelabHelper
             }
         }
 
+        private void totalrepBtn_Click(object sender, EventArgs e)
+        {
+            expertsList.SelectionChanged -= expertsList_SelectionChanged;
+
+            // Get all experts
+            List<Expert> allExperts = expertRepository.GetAllExperts();
+
+            // Get report counts by expert
+            List<(string ExpertName, int TotalReports)> reportCounts = expertRepository.GetReportCountsByExpert();
+
+            // Create a dictionary to store report counts by expert name
+            Dictionary<string, int> reportCountDictionary = new Dictionary<string, int>();
+            foreach (var report in reportCounts)
+            {
+                reportCountDictionary[report.ExpertName] = report.TotalReports;
+            }
+
+            // Create a DataTable to hold the data
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("Expert Name", typeof(string));
+            dataTable.Columns.Add("Total Reports", typeof(int));
+
+            // Fill the DataTable with data
+            foreach (var expert in allExperts)
+            {
+                int totalReports = reportCountDictionary.ContainsKey(expert.Name) ? reportCountDictionary[expert.Name] : 0;
+                dataTable.Rows.Add(expert.Name, totalReports);
+            }
+
+            // Assuming you have a DataGridView control named dataGridView1
+            expertsList.DataSource = dataTable;
+        }
 
     }
 }

@@ -110,5 +110,25 @@ namespace CrimelabHelper.Repositories
                 command.ExecuteNonQuery();
             }
         }
+
+        public List<(string ExpertName, int TotalReports)> GetReportCountsByExpert()
+        {
+            List<(string ExpertName, int TotalReports)> result = new List<(string ExpertName, int TotalReports)>();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT experts.name, COUNT(*) AS TotalReports FROM experts INNER JOIN investigation_reports ON experts.expert_id = investigation_reports.expert GROUP BY experts.name";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add((reader.GetString("name"), reader.GetInt32("TotalReports")));
+                    }
+                }
+            }
+            return result;
+        }
+
     }
 }
