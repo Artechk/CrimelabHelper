@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using CrimelabHelper.Models;
 using CrimelabHelper.Repositories;
+using Org.BouncyCastle.Math;
 
 namespace CrimelabHelper
 {
@@ -10,6 +11,8 @@ namespace CrimelabHelper
     {
         private CrimeRepository crimeRepository;
         private int selectedCrimeId = -1;
+        private int firstSelectedCrimeId;
+        private int lastSelectedCrimeId;
 
         public Crimesform()
         {
@@ -19,7 +22,7 @@ namespace CrimelabHelper
             string connectionString = "server=localhost;user=root;database=crimelab";
             crimeRepository = new CrimeRepository(connectionString);
 
-            // Відображаємо список преступлень у DataGridView
+            // Відображаємо список crimes у DataGridView
             ShowCrimes();
         }
 
@@ -36,13 +39,19 @@ namespace CrimelabHelper
         private void crimesList_SelectionChanged(object sender, EventArgs e)
         {
             // Отримуємо ID вибраного crime
-            if (crimesList.SelectedRows.Count > 0)
+            if (crimesList.SelectedRows.Count == 1)
             {
                 selectedCrimeId = (int)crimesList.SelectedRows[0].Cells["CrimeId"].Value;
             }
             else
             {
                 selectedCrimeId = -1;
+            }
+
+            if (crimesList.SelectedRows.Count > 1)
+            {
+                firstSelectedCrimeId = (int)crimesList.SelectedRows[0].Cells["CrimeId"].Value;
+                lastSelectedCrimeId = (int)crimesList.SelectedRows[crimesList.SelectedRows.Count - 1].Cells["CrimeId"].Value;
             }
         }
 
@@ -104,5 +113,37 @@ namespace CrimelabHelper
             }
         }
 
+        private void betweendtsBtn_Click(object sender, EventArgs e)
+        {
+            if (firstSelectedCrimeId > 0 && lastSelectedCrimeId > 0)
+            {
+                // Отримуємо вибрані злочини
+                Crime firstCrime = crimeRepository.GetCrimeById(firstSelectedCrimeId);
+                Crime lastCrime = crimeRepository.GetCrimeById(lastSelectedCrimeId);
+
+                if (firstCrime != null && lastCrime != null)
+                {
+                    // Отримуємо список злочинів між датами першого та останнього вибраних злочинів
+                    List<Crime> datacrimes = crimeRepository.GetCrimesBetweenDates(firstCrime, lastCrime);
+
+                    // Оновлюємо джерело даних для відображення в списку
+                    crimesList.AutoGenerateColumns = true;
+                    crimesList.DataSource = datacrimes;
+                }
+                else
+                {
+                    MessageBox.Show("Не вдалося знайти злочини з вказаними ID.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Будь ласка, виберіть два злочини для пошуку.");
+            }
+        }
+
+        private void totalBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(crimeRepository.GetTotalCrimes(), "Total crimes");
+        }
     }
 }

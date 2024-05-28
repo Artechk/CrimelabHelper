@@ -34,6 +34,8 @@
             addBtn = new Button();
             editBtn = new Button();
             deleteBtn = new Button();
+            betweendtsBtn = new Button();
+            totalBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)crimesList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)crimeRepositoryBindingSource).BeginInit();
             SuspendLayout();
@@ -102,11 +104,45 @@
             deleteBtn.UseVisualStyleBackColor = false;
             deleteBtn.Click += deletecrimeBtn_Click;
             // 
+            // betweendtsBtn
+            // 
+            betweendtsBtn.BackColor = Color.WhiteSmoke;
+            betweendtsBtn.FlatAppearance.BorderColor = Color.Gainsboro;
+            betweendtsBtn.FlatAppearance.BorderSize = 2;
+            betweendtsBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+            betweendtsBtn.FlatStyle = FlatStyle.Flat;
+            betweendtsBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            betweendtsBtn.Location = new Point(986, 283);
+            betweendtsBtn.Name = "betweendtsBtn";
+            betweendtsBtn.Size = new Size(118, 51);
+            betweendtsBtn.TabIndex = 10;
+            betweendtsBtn.Text = "btw";
+            betweendtsBtn.UseVisualStyleBackColor = false;
+            betweendtsBtn.Click += betweendtsBtn_Click;
+            // 
+            // totalBtn
+            // 
+            totalBtn.BackColor = Color.WhiteSmoke;
+            totalBtn.FlatAppearance.BorderColor = Color.Gainsboro;
+            totalBtn.FlatAppearance.BorderSize = 2;
+            totalBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+            totalBtn.FlatStyle = FlatStyle.Flat;
+            totalBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            totalBtn.Location = new Point(12, 403);
+            totalBtn.Name = "totalBtn";
+            totalBtn.Size = new Size(99, 38);
+            totalBtn.TabIndex = 11;
+            totalBtn.Text = "Total";
+            totalBtn.UseVisualStyleBackColor = false;
+            totalBtn.Click += totalBtn_Click;
+            // 
             // Crimesform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1116, 453);
+            Controls.Add(totalBtn);
+            Controls.Add(betweendtsBtn);
             Controls.Add(deleteBtn);
             Controls.Add(editBtn);
             Controls.Add(addBtn);
@@ -126,5 +162,7 @@
         private Button addBtn;
         private Button editBtn;
         private Button deleteBtn;
+        private Button betweendtsBtn;
+        private Button totalBtn;
     }
 }

@@ -109,5 +109,58 @@ namespace CrimelabHelper.Repositories
                 command.ExecuteNonQuery();
             }
         }
+
+        public List<Crime> GetCrimesBetweenDates(Crime firstCrime, Crime lastCrime)
+        {
+            DateTime startDate = firstCrime.Date;
+            DateTime endDate = lastCrime.Date;
+
+            List<Crime> crimes = new List<Crime>();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT * FROM crimes WHERE date BETWEEN @StartDate AND @EndDate";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@StartDate", startDate);
+                command.Parameters.AddWithValue("@EndDate", endDate);
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Crime crime = new Crime
+                        {
+                            CrimeId = reader.GetInt32("crime_id"),
+                            Description = reader.GetString("description"),
+                            Date = reader.GetDateTime("date"),
+                            Type = reader.GetString("type")
+                        };
+                        crimes.Add(crime);
+                    }
+                }
+            }
+            return crimes;
+        }
+
+
+        public string GetTotalCrimes()
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT COUNT(*) AS TotalCrimes FROM crimes";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        long totalCrimes = reader.GetInt64("TotalCrimes");
+                        return totalCrimes.ToString(); // Преобразуем в строку перед возвратом
+                    }
+                }
+            }
+            return "0";
+        }
+
+
     }
 }
