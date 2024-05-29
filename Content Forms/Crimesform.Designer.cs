@@ -36,6 +36,7 @@
             deleteBtn = new Button();
             betweendtsBtn = new Button();
             totalBtn = new Button();
+            totaltypeBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)crimesList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)crimeRepositoryBindingSource).BeginInit();
             SuspendLayout();
@@ -136,11 +137,28 @@
             totalBtn.UseVisualStyleBackColor = false;
             totalBtn.Click += totalBtn_Click;
             // 
+            // totaltypeBtn
+            // 
+            totaltypeBtn.BackColor = Color.WhiteSmoke;
+            totaltypeBtn.FlatAppearance.BorderColor = Color.Gainsboro;
+            totaltypeBtn.FlatAppearance.BorderSize = 2;
+            totaltypeBtn.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+            totaltypeBtn.FlatStyle = FlatStyle.Flat;
+            totaltypeBtn.Font = new Font("Georgia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            totaltypeBtn.Location = new Point(157, 403);
+            totaltypeBtn.Name = "totaltypeBtn";
+            totaltypeBtn.Size = new Size(114, 38);
+            totaltypeBtn.TabIndex = 12;
+            totaltypeBtn.Text = "TotalbyType";
+            totaltypeBtn.UseVisualStyleBackColor = false;
+            totaltypeBtn.Click += totaltypeBtn_Click;
+            // 
             // Crimesform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1116, 453);
+            Controls.Add(totaltypeBtn);
             Controls.Add(totalBtn);
             Controls.Add(betweendtsBtn);
             Controls.Add(deleteBtn);
@@ -164,5 +182,6 @@
         private Button deleteBtn;
         private Button betweendtsBtn;
         private Button totalBtn;
+        private Button totaltypeBtn;
     }
 }

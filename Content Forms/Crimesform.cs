@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 using CrimelabHelper.Models;
 using CrimelabHelper.Repositories;
@@ -145,5 +146,30 @@ namespace CrimelabHelper
         {
             MessageBox.Show(crimeRepository.GetTotalCrimes(), "Total crimes");
         }
+
+        private void totaltypeBtn_Click(object sender, EventArgs e)
+        {
+            // Remove event handler temporarily to prevent unwanted triggers
+            crimesList.SelectionChanged -= crimesList_SelectionChanged;
+
+            // Get crime counts by type
+            List<(string Type, int TotalCrimes)> crimeCounts = crimeRepository.GetCrimeCountsByType();
+
+            // Create a DataTable to hold the data
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("Crime Type", typeof(string));
+            dataTable.Columns.Add("Total Crimes", typeof(int));
+
+            // Fill the DataTable with data
+            foreach (var crime in crimeCounts)
+            {
+                dataTable.Rows.Add(crime.Type, crime.TotalCrimes);
+            }
+
+            // Assuming you have a DataGridView control named expertsList
+            crimesList.DataSource = dataTable;
+
+        }
+
     }
 }

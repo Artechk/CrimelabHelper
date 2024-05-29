@@ -162,5 +162,24 @@ namespace CrimelabHelper.Repositories
         }
 
 
+        public List<(string Type, int TotalCrimes)> GetCrimeCountsByType()
+        {
+            List<(string Type, int TotalCrimes)> result = new List<(string Type, int TotalCrimes)>();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT type, COUNT(*) AS TotalCrimes FROM crimes GROUP BY type";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add((reader.GetString("type"), reader.GetInt32("TotalCrimes")));
+                    }
+                }
+            }
+            return result;
+        }
+
     }
 }
